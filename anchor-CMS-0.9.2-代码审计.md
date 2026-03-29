@@ -106,6 +106,7 @@ function current_url() {
 ```
 index.php/<script>alert('www.sec-redclub.com')</script>
 
+// e.g.
 // phptest.auti/index.php/%3Cscript%3Ealert(1)%3C/script%3E
 // phptest.auti/index.php/<script>Ealert(1)</script>
 ```
