@@ -104,7 +104,7 @@ function current_url() {
 也能够构造出XSS Payload
 
 ```
-index.php/<script>alert('www.sec-redclub.com')</script>
+index.php/<script>alert(1)</script>
 
 // e.g.
 // phptest.auti/index.php/%3Cscript%3Ealert(1)%3C/script%3E
